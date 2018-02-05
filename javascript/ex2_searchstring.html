@@ -1,0 +1,55 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<CENTER><h1>EX2 - Search String Non Sensitive Case</h1></CENTER>
+<hr><br>
+</head>
+<body>
+	<script type="text/javascript">
+        function search(){
+            var text = document.getElementById("txtarea").value;
+            var arr_text = text.split(" ");
+            var sensitiveStatus = document.querySelector("input[name='radio']:checked").value;
+            var character = document.getElementById("character").value;
+            var num = 0;
+            arr_text.forEach(key => {
+                if (sensitiveStatus == "No") {
+                    character = character.SenCaseNo();
+                    key = key.SenCaseNo();
+                }
+                if (key.search(character) > -1) {
+                    num++;
+                }
+            });
+            
+            document.getElementById("quantity").innerHTML = num;
+        }
+    </script>
+	<CENTER>
+		<div class="col-sm-8">
+			<label for="Input text" class="col-sm-2 control-label">Input text :</label>
+			<textarea name="txtarea" id="txtarea" cols="50" rows="5" class="form-control"></textarea>
+		</div>
+		<br>
+		<div class="col-sm-8">
+			<label for="Sensitive" class="col-sm-2 control-label">Sensitive Case :</label>
+			<label><input type="radio" name="radio" value="Yes" checked > Yes </label>
+			<label><input type="radio" name="radio" value="No" > No </label>
+		</div>
+		<br>
+		<div class="col-sm-8">
+			<label for="Search" class="col-sm-2 control-label" >Search :</label>
+			<input type="text" id="character" value="">
+		
+		<br><br>
+		
+			<button type="button"  class="btn btn-default" onclick="search()" >search</button>
+		</div>
+		<br>
+		<div class="col-sm-8">
+			<label for="Resolt" class="col-sm-2 control-label">Resolt for Search :</label>
+			<span id="quantity"></span>
+		</div>
+	</CENTER>	
+</body>
+</html>
